@@ -6,6 +6,15 @@
   --link-width: 10rem;
 }
 
+@font-face {
+  font-family: 'Deltha';
+  src:
+    url('assets/Deltha-Font/Deltha-Regular.woff2') format('woff2'),
+    url('assets/Deltha-Font/Deltha-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   margin: 0;
   padding: 0;
