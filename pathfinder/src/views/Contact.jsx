@@ -2,6 +2,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Footer from '../components/Footer';
+import { motion } from "framer-motion";
+
+const fadeInAnimationVariants = {
+  initial: { opacity: 0, y: 100 },
+  animate: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.05 * index,
+      duration: 1,
+      ease: "easeOut"
+    }
+  })
+};
 
 const Contact = () => {
   return (
@@ -9,19 +23,21 @@ const Contact = () => {
       <div className="contact-content">
         <div className="contact-container">
           <div className="contact-left">
-            <div className="text-wrapper">
+            <motion.div className="text-wrapper"
+            variants={fadeInAnimationVariants}
+            initial="initial"
+            whileInView="animate">
               <h2>Join the CareerVerse Today</h2>
               <p>Reach us through:</p>
               <ul>
                 <li><a href="tel:+254768751223" className="hover-underline-animation"><i className="bi bi-telephone-fill"></i> +254 768 751 223</a></li>
                 <li><a href="mailto:pathfinderke29@gmail.com" className="hover-underline-animation"><i className="bi bi-envelope-fill"></i> pathfinderke29@gmail.com</a></li>
-                <li><a href="#" className="hover-underline-animation"><i className="bi bi-linkedin"></i> LinkedIn</a></li>
+                <li><a href="#" className="hover-underline-animation"><i className="bi bi-geo-fill"></i> Juja, Kiambu County</a></li>
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-      <Footer />
     </StyledWrapper>
   );
 };

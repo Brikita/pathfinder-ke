@@ -1,31 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
+
 
 const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
 
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
+
+
   return (
-      <StyledWrapper>
-        <Box className="home-container">
-          <div className="text-section">
-            <div className="text-container"
-                 data-aos="fade-right"
-                 data-aos-duration="1500"
-                 data-aos-easing="ease-in-out">
-              <Typography variant="h2" component="h1" gutterBottom className="home-title">
-                PathFinder-KE
-              </Typography>
-              <Typography variant="h5" className="home-subtitle">
-                Play Your Path. Own Your Future.
-              </Typography>
-            </div>
-            <div className="home-buttons"
-                 data-aos="fade-right"
-                 data-aos-duration="1500"
-                 data-aos-easing="ease-in-sine">
+    <StyledWrapper>
+      <Box className="home-container">
+        <motion.div
+          className="text-section"
+          initial={{ opacity: 0, x: -150 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.2 }}
+        >
+          <div className="text-container">
+            <Typography variant="h2" component="h1" gutterBottom className="home-title">
+              PathFinder-KE
+            </Typography>
+            <Typography variant="h5" className="home-subtitle">
+              Play Your Path. Own Your Future.
+            </Typography>
+            <div
+              className="home-buttons">
               <Button
                 component="a"
                 href="#"
@@ -39,62 +47,76 @@ const Home = () => {
               </Button>
             </div>
           </div>
+        </motion.div>
 
-          <div className="avatar-wrapper">
-            <div className="avatar-container"
-                 data-aos="zoom-in-left"
-                 data-aos-duration="1500"
-                 data-aos-easing="ease-in-out">
-              <img src="/avatar.png" alt="Avatar Character" />
+        <motion.div
+          className="avatar-wrapper"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="avatar-container">
+            <img src="/avatar.png" alt="Avatar Character" />
+          </div>
+        </motion.div>
+
+        {showPopup && (
+          <div className="popup" onClick={() => setShowPopup(false)}>
+            <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+              <span className="popup-close" onClick={() => setShowPopup(false)}>
+                &times;
+              </span>
+              <h2>🛠️ Oops... Not Quite Ready!</h2>
+              <p>The CareerVerse is under construction. The devs are currently googling “how to make a game.” 💻✨</p>
             </div>
           </div>
-
-          {showPopup && (
-            <div className="popup" onClick={() => setShowPopup(false)}>
-              <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-                <span className="popup-close" onClick={() => setShowPopup(false)}>
-                  &times;
-                </span>
-                <h2>🛠️ Oops... Not Quite Ready!</h2>
-                <p>The CareerVerse is under construction. The devs are currently googling “how to make a game.” 💻✨</p>
-              </div>
-            </div>
-          )}
-        </Box>
-      </StyledWrapper>
+        )}
+      </Box>
+    </StyledWrapper>
   );
 };
 
 export default Home;
 
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div.attrs(() => ({
+  id: "home", // Ensures anchor #home works
+  className: "section" // Optional class if you're using it globally
+}))`
+  scroll-margin-top: 80px;
+
+  @media (max-width: 1024px) {
+    scroll-margin-top: 200px;
+  }
+
+
   .home-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.5rem;
     padding: 1rem 2rem;
     min-height: 100vh;
     justify-content: space-between;
     align-items: center;
   }
 
-  .text-section {
+  .text-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
     padding: 0 4rem 4rem 4rem;
   }
-
+  
   .home-title {
-    font-family: "Audiowide", sans-serif;
-    font-weight: 450;
+    font-family: "Deltha", sans-serif;
+    font-weight: 400;
     font-size: 4.5rem;
   }
 
   .home-subtitle {
-    font-family: "Audiowide", sans-serif;
+    font-family: "Deltha", sans-serif;
     font-size: 1.75rem;
     font-style: italic;
     color: #1ce6ff;
@@ -113,7 +135,6 @@ const StyledWrapper = styled.div`
     animation: gradientFlow 2s ease infinite;
     animation-direction: normal;
     transition: transform 0.3s ease, box-shadow 0.3s ease, animation-direction 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 128, 255, 0.2);
     overflow: hidden;
     color: #fff;
     z-index: 1;
@@ -128,7 +149,6 @@ const StyledWrapper = styled.div`
   .home-buttons:hover {
     width: auto;
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 128, 0.2);
     animation-direction: reverse;
   }
 
@@ -203,101 +223,103 @@ const StyledWrapper = styled.div`
   }
 
   .avatar-container img {
-    height: 90vh;
+    height: 95vh;
     width: auto;
     object-fit: contain;
   }
 
- @media (max-width: 1024px) {
-  .home-container {
-    flex-direction: column;
-    padding: 2rem 1rem;
-    align-items: center; /* ensures everything is centered horizontally */
-  }
-
-  .text-section {
-    padding: 2rem 1rem;
-    align-items: center;
+  @media (max-width: 1024px) {
+    .home-container {
+      flex-direction: column;
+      padding: 2rem 1rem;
+      align-items: center;
+    }
+    
+   .text-container {
     text-align: center;
     display: flex;
     flex-direction: column;
-  }
-
-  .home-title {
-    font-size: 5rem;
-    word-wrap: break-word;
-  }
-
-  .home-subtitle {
-    font-size: 2rem;
-    margin-top: 0.5rem;
-    word-wrap: break-word;
-    max-width: 100%;
-  }
-
-  .home-buttons {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
     align-items: center;
-  }
-
-  .avatar-wrapper {
-    justify-content: center;
-    padding: 1rem 0;
-  }
-
-  .avatar-container img {
-    max-height: 60vh;
-    width: auto;
-  }
-
-  .animated-btn span {
-    font-size: 1.8rem;
-  }
-
-  .animated-btn .btn-label::after {
-    display: none;
-  }
-
-  .animated-btn:hover .btn-label {
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .text-section {
-    padding: 1rem;
-    text-align: center;
-    align-items: center;
-  }
-
-  .home-title {
-    font-size: 2.5rem;
-  }
-
-  .home-subtitle {
-    font-size: 1.2rem;
-    max-width: 100%;
-    word-wrap: break-word;
-  }
-
-  .home-buttons {
-    margin-top: 1.5rem;
-    justify-content: center;
-  }
   
-  .animated-btn span {
-    font-size: 1rem;
-  }
-
-  .avatar-wrapper {
-    padding: 0;
-  }
-
-  .avatar-container img {
-    max-height: 60vh;
-    width: auto;
-  }
 }
+
+
+
+    .home-title {
+      font-size: 5rem;
+    }
+
+    .home-subtitle {
+      font-size: 2rem;
+      margin-top: 0.5rem;
+    }
+
+    .home-buttons {
+      margin-top: 2rem;
+    }
+
+    .avatar-wrapper {
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    .avatar-container img {
+      max-height: 60vh;
+    }
+
+    .animated-btn span {
+      font-size: 1.8rem;
+    }
+
+    .animated-btn .btn-label::after {
+      display: none;
+    }
+
+    .animated-btn:hover .btn-label {
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 480px) {  
+    .text-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.text-container {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+    
+    .home-title {
+      font-size: 2.7rem !important;
+    }
+
+    .home-subtitle {
+      font-size: 1.55rem !important;
+    }
+
+    .home-buttons {
+      margin-top: 1rem;
+    }
+
+    .animated-btn span {
+      font-size: 1.1rem;
+    }
+    .avatar-container img {
+      max-height: 65vh;
+    }
+}
+
+  }
 `;

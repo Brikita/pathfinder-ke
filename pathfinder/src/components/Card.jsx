@@ -38,20 +38,22 @@ const StyledWrapper = styled.div`
     .card {
         --font-color: #ffffff;
         --font-color-sub: rgb(42, 134, 184);
-        --bg-color: rgba(0, 111, 255, 0.11);
+        --bg-color: #006FFF1C;
         --main-color: rgba(0, 208, 255, 0.5);
         width: 15rem;
         height: 20rem;
-        background: var(--bg-color);
-        box-shadow: var(--main-color) 0px 15px 25px, var(--main-color) 0px 5px 10px;
+        background: linear-gradient(180deg, #002d70, #062147);
         border-radius: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 0.6rem;
+        gap: 0.7rem;
         padding: 1rem;
+        overflow: hidden;
+        z-index: 1;
     }
+
 
     .card .card-border-top {
         width: 60%;
@@ -67,6 +69,7 @@ const StyledWrapper = styled.div`
         height: 9rem;
         border-radius: 30%;
         object-fit: fill;
+        margin-bottom: 1rem;
     }
 
 
@@ -93,14 +96,14 @@ const StyledWrapper = styled.div`
         gap: 20px;
         transition: 0.5s;
         font-size: 1.5rem;
-        
+
     }
 
     .card-socials-btn {
         width: 25px;
         height: 25px;
         border: none;
-        color: #0aa3a3;
+        color: #062147;
         cursor: pointer;
     }
 
@@ -108,6 +111,29 @@ const StyledWrapper = styled.div`
         width: 100%;
         height: 100%;
     }
+
+    .card {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #22ff00, #0080ff);
+        transition: bottom 0.5s ease-in-out;
+        z-index: -1;
+    }
+
+    .card:hover::before {
+        bottom: 0;
+    }
+
 
     .card:hover > .card-socials {
         opacity: 1;
@@ -118,15 +144,20 @@ const StyledWrapper = styled.div`
         transform: translateY(-5px);
         transition: all 0.15s;
     }
-    
-    
-    @media (max-width: 1024px){
+
+
+    @media (max-width: 1024px) {
         .card-socials {
-        opacity: 1;
-        height: 3rem;
+            opacity: 1;
+            height: 3rem;
             margin-top: 0;
+        }
+
+        .card-socials-btn {
+            color: #00eaff
+        }
     }
-    
-    
-    
+
+
+
 `;

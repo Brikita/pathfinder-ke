@@ -19,6 +19,8 @@
     "aos": "^2.3.4",
     "bootstrap-icons": "^1.13.1",
     "feather": "^0.0.5",
+    "framer-motion": "^12.23.3",
+    "motion": "^12.23.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-feather": "^2.0.10",
