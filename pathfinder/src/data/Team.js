@@ -1,7 +1,13 @@
 const team = [
+    {
+    name: "Dr. Lawrence Nderu",
+    role: "Principal Investigator",
+    avatar: "Nderu.jpg",
+    linkedin: "https://www.linkedin.com/in/dr-lawrence-nderu/",
+  },
   {
     name: "Benzil Emmanuel",
-    role: "Prompt Engineer",
+    role: "Project Lead",
     avatar: "Benzil.jpg",
     github: "https://github.com/DeliriousKidd0",
     linkedin: "https://www.linkedin.com/in/benzil-emmanuel-b61748307/",
@@ -15,7 +21,7 @@ const team = [
   },
   {
     name: "Brian Kinyua",
-    role: "Fullstack Developer",
+    role: "Fullstack/Game Developer",
     avatar: "proff.jpg",
     github: "https://github.com/Brikita",
     linkedin: "https://www.linkedin.com/in/briankinyua",
@@ -38,6 +44,7 @@ const team = [
     name: "Spencer Francis",
     role: "Communications Specialist",
     avatar: "Spence.jpg",
+    github: "https://github.com/Young-ambitious",
     linkedin: "https://www.linkedin.com/in/spencer-francis-5711642b7/",
   }
 ];

@@ -1,7 +1,19 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import "aos/dist/aos.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import styled from "styled-components";
+import { motion } from "framer-motion";
+
+// Animation variants
+const variants = {
+  fadeLeft:  { hidden: { opacity: 0, x: -100 }, visible: { opacity: 1, x: 0 } },
+  fadeRight: { hidden: { opacity: 0, x: 100 },  visible: { opacity: 1, x: 0 } },
+};
+
+
+// Fallback fix for AOS content staying invisible
+
 
 const FlipCard = ({ icon, title, description }) => {
   const [flipped, setFlipped] = useState(false);
@@ -35,38 +47,94 @@ const FlipCard = ({ icon, title, description }) => {
 };
 
 const About = () => {
-  return (
-    <StyledWrapper>
-      <section className="top-section">
-        <div className="content">
-          <h2>Kenya’s Career Crisis</h2>
-          <p>
-            Many young Kenyans finish high school without a clear understanding of the career paths ahead.
-            Lack of access to guidance, relatable resources, and the ability to test potential futures creates fear, confusion, and mismatched decisions.
-            PathFinder-KE changes that.
-          </p>
-          <Link to="/discover" className="learn-more">Learn More</Link>
-        </div>
-      </section>
 
-      <section className="bottom-section">
-        <div className="bottom-content">
-          <h2 className="section-title">Our Solution</h2>
-          <div className="card-container">
-            <FlipCard
-              icon="bi bi-controller"
-              title="Gamified"
-              description="We turn your choices into interactive gameplay so you can explore different paths safely and see how decisions shape your future."
-            />
-            <FlipCard
-              icon="bi bi-journal-bookmark"
-              title="Educational"
-              description="Every experience is rooted in real-world data, ensuring you not only play but learn critical lessons for life and school."
-            />
-          </div>
-        </div>
-      </section>
-    </StyledWrapper>
+
+  return (
+    <>
+      <StyledWrapper>
+        <section className="top-section">
+          <motion.div
+             className="content"
+             initial={{ opacity: 0, y: 100 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             transition={{ duration: 1.5, ease: "easeInOut" }}
+             >
+
+            <h2>Kenya’s Career Crisis</h2>
+            <p>
+              Many young Kenyans finish high school without a clear understanding of the career paths ahead.
+              Lack of access to guidance, relatable resources, and the ability to test potential futures creates fear, confusion, and mismatched decisions.
+              PathFinder-KE changes that.
+            </p>
+            <Link to="/discover" className="learn-more">Learn More</Link>
+          </motion.div>
+        </section>
+
+        <section className="bottom-section">
+          <motion.div className="bottom-content"
+               initial={{ opacity: 0, y: 80 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ duration: 1.2, ease: "easeInOut" }}>
+            <h2 className="section-title"
+               > Why Our Solution Works</h2>
+            <div className="card-container">
+  <motion.div
+    variants={variants.fadeLeft}
+    initial="hidden"
+    whileInView="visible"
+    transition={{ duration: 0.8 }}
+  >
+    <FlipCard
+      icon="bi bi-controller"
+      title="Gamified"
+      description="We turn your choices into interactive gameplay so you can explore different paths safely and see how decisions shape your future."
+    />
+  </motion.div>
+
+  <motion.div
+    variants={variants.fadeRight}
+    initial="hidden"
+    whileInView="visible"
+    transition={{ duration: 0.8, delay: 0.1 }}
+  >
+    <FlipCard
+      icon="bi bi-journal-bookmark"
+      title="Educational"
+      description="Every experience is rooted in real-world data, ensuring you not only play but learn critical lessons for life and school."
+    />
+  </motion.div>
+
+  <motion.div
+    variants={variants.fadeLeft}
+    initial="hidden"
+    whileInView="visible"
+    transition={{ duration: 0.8, delay: 0.2 }}
+  >
+    <FlipCard
+      icon="bi bi-hand-index-thumb"
+      title="Interactive"
+      description="Empowers users to actively engage, make choices, and shape their journey through immersive, decision-driven experiences."
+    />
+  </motion.div>
+
+  <motion.div
+    variants={variants.fadeRight}
+    initial="hidden"
+    whileInView="visible"
+    transition={{ duration: 0.8, delay: 0.3 }}
+  >
+    <FlipCard
+      icon="bi bi-globe-europe-africa"
+      title="Afro-centric"
+      description="Celebrates African identity by grounding experiences in local cultures, stories, and values that resonate with the continent’s youth."
+    />
+  </motion.div>
+</div>
+
+          </motion.div>
+        </section>
+      </StyledWrapper>
+    </>
   );
 };
 
@@ -167,10 +235,10 @@ const StyledWrapper = styled.div`
     transform-style: preserve-3d;
   }
 
-  .flip-card-inner.flipped,
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+  .flip-card-inner.flipped {
+  transform: rotateY(180deg);
   }
+
 
   .flip-card-front,
   .flip-card-back {
@@ -193,13 +261,17 @@ const StyledWrapper = styled.div`
       #00c4ff 95%
     );
     color: #ffffff;
-  }
+  } 
+  
+  .flip-card-front {
+  transform: rotateY(0deg);
+ }
 
   .flip-card-back {
     transform: rotateY(180deg);
     text-align: left;
-  }
-
+}
+  
   .card-content {
     padding: 1.5rem;
   }

@@ -4,7 +4,6 @@
   --text: #fff;
   --link-height: calc(var(--spacer) * 3.5);
   --link-width: 10rem;
-  --transition: 250ms ease all;
 }
 
 html, body {
@@ -14,7 +13,7 @@ html, body {
   height: 100%;
   scroll-behavior: smooth;
   color: var(--text);
-  background: linear-gradient(to bottom, #0a0f2c 0%, #062147 35%, #00192e 70%, #000f1c 100%);
+  background: linear-gradient(to bottom, #0a0f2c 0%, #0a1a40 25%, #001e3c 55%, #001626 80%, #000f1c 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -37,12 +36,13 @@ html, body {
 }
 
 .section {
-  min-height: 100vh;
+  min-height: 100dvh;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 
 /* Header / NavBar */
 
@@ -53,7 +53,7 @@ html, body {
   right: 0;
   z-index: 1000;
   background-color: #000E1E28;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(12px);
   padding: 0 2rem;
   height: 5rem;
@@ -198,11 +198,10 @@ html, body {
     right: -100%;
     width: 80vw;
     height: 100vh;
-    background-color: #002852;
+    background-color: rgb(0, 40, 82);
     backdrop-filter: blur(50px);
     z-index: 9999;
     transition: right 0.4s ease-in-out;
-    box-shadow: 0 4px 20px rgba(0, 128, 255, 0.2);
     border-radius: 80px 0 0 0;
 
     display: flex;
@@ -229,7 +228,7 @@ html, body {
 
   .mobile-wrapper ul li a {
     font-family: "Audiowide", sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: normal;
     color: #fff;
     text-decoration: none;
@@ -259,7 +258,7 @@ html, body {
   }
 
   .nav-logo {
-    height: 8rem;
+    height: 6rem;
     position: relative;
     left: -2rem;
   }
@@ -278,30 +277,7 @@ html, body {
     z-index: 10000;
     cursor: pointer;
   }
-  .menu-icon{
-    color: #00eaff;
-  }
 
-
-  /* Mobile Menu Container */
-  .mobile-wrapper {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80vw;
-    height: 100vh;
-    background-color: #002852;
-    backdrop-filter: blur(50px);
-    z-index: 9999;
-    transition: right 0.4s ease-in-out;
-    box-shadow: 0 4px 20px rgba(0, 128, 255, 0.2);
-    border-radius: 80px 0 0 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
 
   /* Show Menu */
   .mobile-wrapper.open {
@@ -352,9 +328,6 @@ html, body {
   body {
     overflow-x: hidden;
   }
-#home-section{
-  scroll-margin-top: 40px;
-}
 
 /* Blurred modal backdrop */
 .popup {
@@ -417,50 +390,4 @@ html, body {
 /* Hide checkbox toggle by default */
 input[type="checkbox"] {
   display: none;
-}
-
-
-
-/* Footer */
-.footer {
-  background-color: #013561;
-  padding: 1rem 2rem;
-  text-align: center;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-text {
-  font-size: 0.95rem;
-  color: #ffffff;
-}
-
-.footer-socials {
-  list-style: none;
-  display: flex;
-  gap: 1.75rem;
-  padding: 0;
-  margin: 0;
-
-}
-
-.footer-socials li a {
-  font-size: 1.5rem;
-  color: #b3dcfd;
-  transition: color 0.3s ease;
-}
-
-.footer-socials li a:hover {
-  color: #0aa3a3; /* Use platform-specific color if needed */
-}
-
-@media (max-width: 600px) {
-  .footer-socials {
-    gap: 1rem;
-  }
 }

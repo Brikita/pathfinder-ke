@@ -112,6 +112,7 @@ const StyledWrapper = styled.div`
     text-decoration: none;
     font-size: 1.5rem;
     transition: background-color 0.3s ease;
+    position: fixed;
   }
 
   .back-button:hover {

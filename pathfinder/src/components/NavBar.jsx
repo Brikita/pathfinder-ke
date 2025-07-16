@@ -67,7 +67,7 @@ const NavBar = ({ onNavClick }) => {
         {/* Mobile Toggle Icons */}
         {!menuOpen && (
          <button className="menu-icon" onClick={() => setMenuOpen(true)}>
-            <i className="bi bi-three-dots-vertical"></i>
+            <i className="bi bi-list"></i>
          </button>
          )}
          </header>
