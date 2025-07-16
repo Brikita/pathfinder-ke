@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Deltha';
+    src: url('Deltha-Regular.eot');
+    src: url('Deltha-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Deltha-Regular.woff2') format('woff2'),
+        url('Deltha-Regular.woff') format('woff'),
+        url('Deltha-Regular.ttf') format('truetype'),
+        url('Deltha-Regular.svg#Deltha-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
