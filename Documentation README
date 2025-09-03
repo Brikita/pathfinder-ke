@@ -1,0 +1,53 @@
+# Pathfinder-KE 🎮  
+*A Web-Based Gamified Career Exploration Game for Kenyan Students*  
+
+## 🌍 Overview  
+Pathfinder-KE is an interactive **career exploration game** built in **Unity 6**.  
+It helps Kenyan students discover career pathways by exploring a virtual high school and campus, completing quizzes, interacting with NPCs, and experiencing simulated career activities.  
+
+- **Engine:** Unity 6  
+- **Platform:** WebGL (mobile builds coming soon)  
+- **Status:** In development (Computer Science path complete, others coming)  
+
+---
+
+## 🎮 Features So Far  
+- Fully furnished **High School & Campus scenes** (classrooms, lockers, NPC students & teachers).  
+- **Character selection** system.  
+- **Quizzes:** Computer, Mathematics, Kiswahili with scoring system.  
+- **Checkpoints** to save player progress.  
+- **Portals** for scene transitions.  
+- **Waypoint marker** to guide players through quests.  
+- **NPC dialogues** (partially interactive, more to be added).  
+- **Flashcards & coding challenges** for learning.  
+- **Internship simulation** in the Computer Science storyline.  
+- **UI canvases** for quizzes, dialogues, and flashcards (all functional).  
+
+---
+
+## ⏳ Roadmap  
+- Add **Education** and **Business Administration** storylines.  
+- Expand NPC dialogues & career branching logic.  
+- Player **profile name entry**.  
+- **Rewards system** (badges, unlocks).  
+- **Background music & sound effects**.  
+- **Database integration** (Firebase/MySQL) for saves & analytics.  
+- Mobile builds (Android/iOS).  
+
+---
+
+## 🛠️ Tech Stack  
+- **Engine:** Unity 6  
+- **Language:** C#  
+- **Data:** PlayerPrefs + JSON (local saves)  
+- **Deployment:** WebGL 
+---
+
+## 👥 Team  
+- Benzil – Team Lead, Strategy, Prompt Engineering  
+- Oliver – UI/UX, Music Integration  
+- Pato – Game Architecture, Animations  
+- Brian – Backend Logic, QA  
+- Parsley – Research, Visualization, Game developer 
+- Spence – Content Strategy, Communications  
+
